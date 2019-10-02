@@ -1,10 +1,9 @@
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
 import TopNav from "./components/TopNav";
 import BottomNavigation from "./components/BottomNav";
-import Signup from "./components/Signup";
-import Login from "./components/Login";
-import { login } from "./services/api";
+import Head from './components/Head';
+import CompetitionTable from './components/CompetitionTable';
+
 
 import "./App.css";
 
@@ -13,13 +12,12 @@ class App extends React.Component {
     return (
       <div className="App">
         <TopNav />
-
         <h1>Last Man Standing</h1>
-
+        <Head />
+        <CompetitionTable />
         <BottomNavigation />
       </div>
     );
   }
-}
 
-export default App;
+  export default App;
