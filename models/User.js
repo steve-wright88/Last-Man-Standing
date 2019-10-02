@@ -4,7 +4,16 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema(
   {
     username: String,
-    password: String
+    fistName: String,
+    lastName: String,
+    password: String,
+    paid: Boolean,
+    choices: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Choice"
+      }
+    ]
   },
   {
     timestamps: true

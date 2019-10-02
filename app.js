@@ -17,7 +17,7 @@ const passport = require("passport");
 require("./configs/passport");
 
 mongoose
-  .connect("mongodb://localhost/project-management-server", {
+  .connect("mongodb://localhost/last-man-standing", {
     useNewUrlParser: true
   })
   .then(x => {
@@ -42,7 +42,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-
 // ADD SESSION SETTINGS HERE:
 
 const MongoStore = require("connect-mongo")(session);
@@ -65,7 +64,6 @@ app.locals.title = "Express - Generated with IronGenerator";
 
 const index = require("./routes/index");
 app.use("/", index);
-
 
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
