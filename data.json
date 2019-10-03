@@ -1,0 +1,24 @@
+{
+  "premierleague": [
+    { "team": "Arsenal" },
+    { "team": "Aston Villa" },
+    { "team": "Bournemouth" },
+    { "team": "Brighton" },
+    { "team": "Burnley" },
+    { "team": "Chelsea" },
+    { "team": "Crystal Palace" },
+    { "team": "Everton" },
+    { "team": "Leicester" },
+    { "team": "Liverpool" },
+    { "team": "Man City" },
+    { "team": "Man Utd" },
+    { "team": "Newcastle" },
+    { "team": "Norwich" },
+    { "team": "Sheffield Utd" },
+    { "team": "Southampton" },
+    { "team": "Tottenham" },
+    { "team": "Watford" },
+    { "team": "West Ham" },
+    { "team": "Wolves" }
+  ]
+}

@@ -3,10 +3,28 @@ const router = express.Router();
 const User = require("../models/User");
 const Choice = require("../models/Choice");
 
-router.patch("/addteam", (req, res) => {
-  //const team = req.body.team (this will be a string)
-  User.findByIdAndUpdate(id, { $push: { choices: team } });
-  // const { title, description, tasks = [] } = req.body;
+const teams = require("../data.json").premierleague;
+
+// GET all available teams (all the teams minus the ones that were previously picked)
+router.get("/availableTeams", (req, res) => {
+  const id = req.user._id;
+  User.findById(id)
+    .populate("choices")
+    .then(user => {
+      // subtract the teams in user.choices from data.json
+      // res.json(user);
+      const selected = user.choices.map(el => {
+        return el.team;
+      });
+      const available = teams.filter(obj => {
+        // return the
+        if (selected.includes(obj.team)) {
+          return false;
+        } else return true;
+      });
+
+      res.json(available);
+    });
 });
 
 router.post("/pick/:round", (req, res) => {
@@ -27,11 +45,7 @@ router.post("/pick/:round", (req, res) => {
         status: "pending"
       }).then(newChoice => {
         const id = newChoice._id;
-        User.findByIdAndUpdate(
-          userId,
-          { $push: { choices: id } },
-          { new: true }
-        ).then(() => {
+        User.findByIdAndUpdate(userId, { $push: { choices: id } }).then(() => {
           res.json({ message: "ok" });
         });
       });

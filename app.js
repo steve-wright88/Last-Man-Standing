@@ -68,7 +68,10 @@ app.use("/", index);
 const authRoutes = require("./routes/auth");
 app.use("/api/auth", authRoutes);
 
-const userRoutes = require("./routes/teamChoice");
-app.use("/api", userRoutes);
+const choicesRoutes = require("./routes/choices");
+app.use("/api", choicesRoutes);
+
+// const userRoutes1 = require("./routes/availableTeams");
+// app.use("/api", userRoutes1);
 
 module.exports = app;
