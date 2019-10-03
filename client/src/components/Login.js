@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
 import { login } from "../services/api";
 
 export default class Login extends Component {
@@ -19,7 +20,7 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { username, password } = this.state;
+    const { username, password, firstName, lastName } = this.state;
 
     login(username, password).then(data => {
       if (data.message) {
@@ -41,32 +42,32 @@ export default class Login extends Component {
     return (
       <>
         <h2>Login</h2>
-        <form onSubmit={this.handleSubmit}>
-          <form>
-            <form htmlFor="username">Username: </form>
-            <form
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Label htmlFor="username">Username: </Form.Label>
+            <Form.Control
               type="text"
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
               id="username"
             />
-          </form>
-          <form>
-            <form htmlFor="password">Password: </form>
-            <form
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="password">Password: </Form.Label>
+            <Form.Control
               type="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
               id="password"
             />
-          </form>
+          </Form.Group>
           {this.state.message && (
-            <alert variant="danger">{this.state.message}</alert>
+            <Alert variant="danger">{this.state.message}</Alert>
           )}
-          <button type="submit">Login</button>
-        </form>
+          <Button type="submit">Login</Button>
+        </Form>
       </>
     );
   }
