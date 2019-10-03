@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Form, Button, Alert } from "react-bootstrap";
 import { signup } from "../services/api";
 
 export default class Signup extends Component {
@@ -41,30 +42,52 @@ export default class Signup extends Component {
     return (
       <>
         <h2>Signup</h2>
-        <form onSubmit={this.handleSubmit}>
-          <form>
-            <form htmlFor="username">Username: </form>
-            <form
+        <Form onSubmit={this.handleSubmit}>
+          <Form.Group>
+            <Form.Label htmlFor="username">Username: </Form.Label>
+            <Form.Control
               type="text"
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
               id="username"
             />
-          </form>
-          <form>
-            <form htmlFor="password">Password: </form>
-            <form
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="firstName">First Name: </Form.Label>
+            <Form.Control
+              type="text"
+              name="firstName"
+              value={this.state.firstName}
+              onChange={this.handleChange}
+              id="firstName"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="lastName">Last Name: </Form.Label>
+            <Form.Control
+              type="text"
+              name="lastName"
+              value={this.state.lastName}
+              onChange={this.handleChange}
+              id="lastName"
+            />
+          </Form.Group>
+          <Form.Group>
+            <Form.Label htmlFor="password">Password: </Form.Label>
+            <Form.Control
               type="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
               id="password"
             />
-          </form>
-          {this.state.message && <alert>{this.state.message}</alert>}
-          <button type="submit">Signup</button>
-        </form>
+          </Form.Group>
+          {this.state.message && (
+            <Alert variant="danger">{this.state.message}</Alert>
+          )}
+          <Button type="submit">Signup</Button>
+        </Form>
       </>
     );
   }

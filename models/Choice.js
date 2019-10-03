@@ -9,7 +9,7 @@ const choiceSchema = new Schema(
     },
     round: Number,
     team: String,
-    result: String
+    status: String
   },
   {
     timestamps: true
