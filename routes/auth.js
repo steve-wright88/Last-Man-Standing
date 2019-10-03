@@ -6,7 +6,7 @@ const passport = require("passport");
 
 // POST api/auth/signup
 router.post("/signup", (req, res) => {
-  const { username, password } = req.body;
+  const { username, password, firstName, lastName } = req.body;
 
   if (!password || password.length < 8) {
     return res
@@ -26,20 +26,23 @@ router.post("/signup", (req, res) => {
       const salt = bcrypt.genSaltSync();
       const hash = bcrypt.hashSync(password, salt);
 
-      return User.create({ username: username, password: hash }).then(
-        dbUser => {
-          // Login the user on signup
+      return User.create({
+        username: username,
+        password: hash,
+        firstName: firstName,
+        lastName: lastName
+      }).then(dbUser => {
+        // Login the user on signup
 
-          req.login(dbUser, err => {
-            if (err) {
-              return res
-                .status(500)
-                .json({ message: "Error while attempting to login" });
-            }
-            res.json(dbUser);
-          });
-        }
-      );
+        req.login(dbUser, err => {
+          if (err) {
+            return res
+              .status(500)
+              .json({ message: "Error while attempting to login" });
+          }
+          res.json(dbUser);
+        });
+      });
     })
     .catch(err => {
       res.json(err);
