@@ -20,7 +20,7 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { username, password, firstName, lastName } = this.state;
+    const { username, password } = this.state;
 
     login(username, password).then(data => {
       if (data.message) {
@@ -33,7 +33,7 @@ export default class Login extends Component {
         // successfully logged in
         // update the state for the parent component
         this.props.setUser(data);
-        this.props.history.push("/login");
+        this.props.history.push("/main");
       }
     });
   };

@@ -1,14 +1,14 @@
 import React from "react";
 import TopNav from "./components/TopNav";
-import Head from "./components/Head";
-import CompetitionTable from "./components/CompTable/CompetitionTable";
+//import CompetitionTable from "./components/CompTable/CompetitionTable";
 import { Route, Redirect } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
 // import CompWelcome from "./components/head/CompWelcome";
-import Dropdown from "./components/head/Dropdown";
+// import Dropdown from "./components/head/Dropdown";
 import "./App.css";
+import Main from './components/Main';
 
 class App extends React.Component {
   state = {
@@ -54,6 +54,8 @@ class App extends React.Component {
           path="/login"
           render={props => <Login setUser={this.setUser} {...props} />}
         />
+
+        <Main/>
       </div>
     );
   }
