@@ -6,8 +6,9 @@ import { Route, Redirect } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
+// import CompWelcome from "./components/head/CompWelcome";
+import Dropdown from "./components/head/Dropdown";
 import "./App.css";
-import Dropdown from "./components/Dropdown";
 
 class App extends React.Component {
   state = {
@@ -25,6 +26,7 @@ class App extends React.Component {
       <div className="App">
         <TopNav user={this.state.user} setUser={this.setUser} />
         <Dropdown />
+        {/* <CompWelcome /> */}
 
         {/* prevent a non-logged in user to access certain paths */}
         {/* <Route
