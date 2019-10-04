@@ -1,12 +1,13 @@
 import React from "react";
 import TopNav from "./components/TopNav";
-import Head from "./components/Head";
-import CompetitionTable from "./components/CompTable/CompetitionTable";
+// import Head from "./components/Head";
+// import CompetitionTable from "./components/CompTable/CompetitionTable";
 import { Route, Redirect } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
-// import CompWelcome from "./components/head/CompWelcome";
+// import Main from "./components/Main";
+import CompWelcome from "./components/head/CompWelcome";
 import Dropdown from "./components/head/Dropdown";
 import "./App.css";
 
@@ -25,15 +26,14 @@ class App extends React.Component {
     return (
       <div className="App">
         <TopNav user={this.state.user} setUser={this.setUser} />
-        {/* <Dropdown /> */}
-        {/* <CompWelcome /> */}
+        <Dropdown />
 
         {/* prevent a non-logged in user to access certain paths */}
         {/* <Route
           exact
-          path="/projects"
+          path="/main"
           render={props => {
-            if (this.state.user) return <Projects {...props} />;
+            if (this.state.user) return <Main {...props} />;
             else return <Redirect to="/" />;
           }}
         /> */}
@@ -54,6 +54,8 @@ class App extends React.Component {
           path="/login"
           render={props => <Login setUser={this.setUser} {...props} />}
         />
+
+        <CompWelcome />
       </div>
     );
   }

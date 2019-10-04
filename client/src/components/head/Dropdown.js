@@ -2,44 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 
 /*################### styles ###################*/
-import { withStyles } from "@material-ui/core/styles";
-import { Button, Menu, MenuItem, ListItemText } from "@material-ui/core";
-
-const StyledMenu = withStyles({
-  paper: {
-    border: "1px solid #d3d4d5"
-  }
-})(props => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: "bottom",
-      horizontal: "center"
-    }}
-    transformOrigin={{
-      vertical: "top",
-      horizontal: "center"
-    }}
-    {...props}
-  />
-));
-
-const StyledMenuItem = withStyles(theme => ({
-  root: {
-    "&:focus": {
-      backgroundColor: theme.palette.primary.main,
-      "& .MuiListItemIcon-root, & .MuiListItemText-primary": {
-        color: theme.palette.common.white
-      }
-    }
-  }
-}))(MenuItem);
-/*################### /styles ###################*/
+import { FormControl, Select, MenuItem, Button } from "@material-ui/core";
+/*################### /styles ##################*/
 
 export default class Dropdown extends Component {
   state = {
-    available: []
+    available: [],
+    chosenTeam: "select a team"
   };
 
   componentDidMount() {
@@ -50,14 +19,58 @@ export default class Dropdown extends Component {
     });
   }
 
+  refreshData = () => {
+    axios.get("/api/availableTeams").then(response => {
+      this.setState({
+        available: response.data
+      });
+    });
+  };
+  handleChange = event => {
+    const { value } = event.target;
+    this.setState(
+      {
+        chosenTeam: value
+      },
+      () => {
+        console.log(this.state);
+      }
+    );
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log("...", this.state.chosenTeam);
+    axios.post("api/pick/9", { team: this.state.chosenTeam }).then(() => {
+      //FIX THIS!!!!!!!!!!!!
+      this.refreshData();
+    });
+    this.setState({
+      chosenTeam: "select a team"
+    });
+  };
+
   render() {
     console.log(this.state.available);
     return (
-      <div>
-        {this.state.available.map(el => {
-          return <p key={el.team}>{el.team}</p>;
-        })}
-      </div>
+      <form onSubmit={this.handleSubmit}>
+        <FormControl>
+          <Select
+            onChange={this.handleChange}
+            renderValue={() => <em>{this.state.chosenTeam}</em>}
+            value={this.state.chosenTeam}
+          >
+            {this.state.available.map(el => {
+              return (
+                <MenuItem key={el.team} value={el.team}>
+                  {el.team}
+                </MenuItem>
+              );
+            })}
+          </Select>
+          <Button type="submit">SUBMIT</Button>
+        </FormControl>
+      </form>
     );
   }
 }
