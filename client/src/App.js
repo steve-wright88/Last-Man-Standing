@@ -1,7 +1,7 @@
 import React from "react";
 import TopNav from "./components/TopNav";
-// import Head from "./components/Head";
-// import CompetitionTable from "./components/CompetitionTable";
+import Head from "./components/Head";
+import CompetitionTable from "./components/CompTable/CompetitionTable";
 import { Route, Redirect } from "react-router-dom";
 import Signup from "./components/Signup";
 import Login from "./components/Login";
@@ -24,7 +24,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <TopNav user={this.state.user} setUser={this.setUser} />
-        <Dropdown />
+        {/* <Dropdown /> */}
 
         {/* prevent a non-logged in user to access certain paths */}
         {/* <Route
