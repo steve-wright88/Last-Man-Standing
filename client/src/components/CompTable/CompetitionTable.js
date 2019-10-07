@@ -48,14 +48,17 @@ class CompetitionTable extends Component {
             <th>Round 14</th>
             <th>Round 15</th>
           </tr>
-         
-            {this.state.users.map(user =>
-              <tr><td>{user.username}</td>
-              {user.choices.map(el=> <td>{el.team}</td> )}
-              </tr>
-            )}
 
-         
+          {this.state.users.map(user =>
+            <tr><td>{user.firstName}
+              <br />
+              {user.lastName}
+            </td>
+              {user.choices.map(el => <td>{el.team}</td>)}
+            </tr>
+          )}
+
+
 
           {/* for every user in this.state.users create a tr with a td with just the username */}
         </table>

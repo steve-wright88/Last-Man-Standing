@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Choice = require("../models/Choice");
+const axios = require('axios')
 
 const teams = require("../data.json").premierleague;
 
@@ -33,6 +34,28 @@ router.get("/usersChoices", (req, res) => {
       res.json(users);
     })
 
+})
+
+router.get('/updateResult', (req, res) => {
+  let instance = axios.create({
+    headers: {
+      "X-Auth-Token": 'c89c1d5d960f4950b1dc811236714bae'
+    }
+  })
+
+  instance.get('https://api.football-data.org/v2/competitions/2021/matches?season=2019&matchday=8').then(result => {
+
+    let matchObj = result.data.matches.reduce((acc, team, i) => {
+      let homeResult = team.score.fullTime.homeTeam > team.score.fullTime.awayTeam ? "winner" : "loser"
+
+      let awayResult = team.score.fullTime.awayTeam > team.score.fullTime.homeTeam ? "winner" : "loser"
+
+      acc[team.homeTeam.name] = homeResult
+      acc[team.awayTeam.name] = awayResult
+      return acc
+    }, {})
+    res.json({ matchObj })
+  }).catch(err => res.json(err))
 })
 
 router.post("/pick/:round", (req, res) => {
