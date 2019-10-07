@@ -1,1 +1,13 @@
+.table {
+  // overflow: scroll;
+}
 
+#playerRow {
+  position: relative;
+  background-color: rgb(50, 182, 122);
+}
+
+#playerRow th {
+  color: rgb(255, 255, 255);
+  min-width: 120px;
+}

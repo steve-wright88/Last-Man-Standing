@@ -8,8 +8,13 @@
   padding-bottom: 30vh;
 }
 
-.loginHolder {
-  margin-top: 200px;
+// .loginHolder {
+//   margin-top: 200px;
+// }
+
+#formHolderLogin {
+  display: flex;
+  flex-direction: column;
 }
 
 .loginHolder h2 {

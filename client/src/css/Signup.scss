@@ -12,6 +12,11 @@
   margin-top: 200px;
 }
 
+#formHolderSignup {
+  display: flex;
+  flex-direction: column;
+}
+
 .signupHolder h2 {
   text-align: center;
   font-size: 2.2rem;

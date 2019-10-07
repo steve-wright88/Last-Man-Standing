@@ -32,9 +32,8 @@ router.get("/usersChoices", (req, res) => {
     .populate("choices")
     .then(users => {
       res.json(users);
-    })
-
-})
+    });
+});
 
 router.get('/updateResult', (req, res) => {
   let instance = axios.create({

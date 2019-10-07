@@ -3,15 +3,15 @@
     { "team": "Arsenal" },
     { "team": "Aston Villa" },
     { "team": "Bournemouth" },
-    { "team": "Brighton" },
+    { "team": "Brighton Hove" },
     { "team": "Burnley" },
     { "team": "Chelsea" },
     { "team": "Crystal Palace" },
     { "team": "Everton" },
-    { "team": "Leicester" },
+    { "team": "Leicester City" },
     { "team": "Liverpool" },
     { "team": "Man City" },
-    { "team": "Man Utd" },
+    { "team": "Man United" },
     { "team": "Newcastle" },
     { "team": "Norwich" },
     { "team": "Sheffield Utd" },
@@ -19,6 +19,31 @@
     { "team": "Tottenham" },
     { "team": "Watford" },
     { "team": "West Ham" },
-    { "team": "Wolves" }
+    { "team": "Wolverhampton" }
   ]
+}
+
+{
+  "nameConversion": {
+    "Arsenal FC": "Arsenal",
+    "Aston Villa FC": "Aston Villa",
+    "AFC Bournemouth": "Bournemouth",
+    "Brighton & Hove Albion FC": "Brighton Hove",,
+    "Burnley FC": "Burnley",
+    "Chelsea FC": "Chelsea",
+    "Crystal Palace FC": "Crystal Palace",
+    "Everton FC": "Everton",
+    "Leicester City FC": "Leicester City",
+    "Liverpool FC": "Liverpool",
+    "Manchester City FC":"Man City",
+    "Manchester United FC": "Man United",
+    "Newcastle United FC": "Newcastle",
+    "Norwich City FC": "Norwich",
+    "Sheffield United FC": "Sheffield Utd",
+    "Southampton FC": "Southampton",
+    "Tottenham Hotspur FC": "Tottenham",
+    "Watford FC": "Watford",
+    "West Ham United FC": "West Ham",
+    "Wolverhampton Wanderers FC": "Wolverhampton",
+  }
 }
