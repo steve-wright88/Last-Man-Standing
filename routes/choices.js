@@ -12,7 +12,6 @@ router.get("/availableTeams", (req, res) => {
     .populate("choices")
     .then(user => {
       // subtract the teams in user.choices from data.json
-      // res.json(user);
       const selected = user.choices.map(el => {
         return el.team;
       });
@@ -26,6 +25,15 @@ router.get("/availableTeams", (req, res) => {
       res.json(available);
     });
 });
+
+router.get("/usersChoices", (req, res) => {
+  User.find()
+    .populate("choices")
+    .then(users => {
+      res.json(users);
+    })
+
+})
 
 router.post("/pick/:round", (req, res) => {
   const round = req.params.round;

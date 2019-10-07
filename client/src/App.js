@@ -9,6 +9,7 @@ import Rules from "./components/Rules";
 
 import "./App.css";
 
+
 class App extends React.Component {
   state = {
     user: this.props.user
