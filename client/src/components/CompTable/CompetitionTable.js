@@ -1,67 +1,67 @@
 import React, { Component } from 'react';
 import "../../css/Comptable.scss"
-import PlayerRounds from './PlayerRounds';
-import PlayerName from './PlayerName';
+// import PlayerRounds from './PlayerRounds';
+// import PlayerName from './PlayerName';
 import axios from "axios";
+
+
 
 class CompetitionTable extends Component {
   state = {
-    choices: [
-      { user: "heya", team: "Arsenal", round: 1 }, 
-      { user: "heya2", team: "Liverpool", round: 1 }
-    ]
+    users: []
   }
 
-  // componentDidMount(){
-  //   axios.get("/").then(playerList=>{
-  //     this.setState({players:playerList})
-  //   })
-  // }
+  componentDidMount() {
+    this.getData();
+  }
+
+  getData = () => {
+    axios.get("/api/usersChoices").then(response => {
+      this.setState({
+        users: response.data
+      })
+    })
+  }
 
 
   render() {
+    console.log("State: ", this.state)
+
     return (
-      <div className="containerRow">
-        <div>
-          <h1>Players</h1>
-          {this.state.choices.map((x) => {
-            return <h2> {x.user} </h2>
-          })}
-        </div>
+      <div>
+        <table className="table">
+          <tr>
+            <th>Player</th>
+            <th>Round 1</th>
+            <th>Round 2</th>
+            <th>Round 3</th>
+            <th>Round 4</th>
+            <th>Round 5</th>
+            <th>Round 6</th>
+            <th>Round 7</th>
+            <th>Round 8</th>
+            <th>Round 9</th>
+            <th>Round 10</th>
+            <th>Round 11</th>
+            <th>Round 12</th>
+            <th>Round 13</th>
+            <th>Round 14</th>
+            <th>Round 15</th>
+          </tr>
+         
+            {this.state.users.map(user =>
+              <tr><td>{user.username}</td>
+              {user.choices.map(el=> <td>{el.team}</td> )}
+              </tr>
+            )}
 
-        <div>
+         
 
-          <h1>Round1</h1>
-          {this.state.choices.map((x) => {
-              return <h2>{x.team} </h2>
-            })}
-            
-        </div>
-
-        {/* <table className='CompTable'>
-            <tr>
-              <th>1</th>
-              <th>2</th>
-              <th>3</th>
-              <th>4</th>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td>6</td>
-              <td>7</td>
-              <td>8</td>
-            </tr>
-            <tr>
-              <td>9</td>
-              <td>10</td>
-              <td>11</td>
-              <td>12</td>
-            </tr>
-          <PlayerRounds/>
-          <NamePicks/>
-      </table> */}
+          {/* for every user in this.state.users create a tr with a td with just the username */}
+        </table>
       </div>)
   }
+
 }
 
 export default CompetitionTable
