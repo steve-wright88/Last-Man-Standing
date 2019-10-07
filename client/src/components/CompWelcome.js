@@ -1,12 +1,19 @@
 import React from "react";
 
+import "../css/CompWelcome.scss";
+
 const CompWelcome = props => {
-  console.log("user", props);
   return (
-    <div>
-      <div>{props.user && <h2>Welcome, {props.user.lastName}</h2>}</div>
-      <div>{/* Choose your team for round {props.choices.round} */}</div>
-    </div>
+    <>
+      <div id="welcomeMessage">
+        {props.user && <h2>Welcome, {props.user.firstName}</h2>}
+      </div>
+
+      <div>
+        <p id="roundChoice">Please choose your team for round 1.</p>
+        {/* Choose your team for round {props.choices.round} */}
+      </div>
+    </>
   );
 };
 

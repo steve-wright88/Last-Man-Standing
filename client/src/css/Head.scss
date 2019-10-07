@@ -1,0 +1,17 @@
+.headContainer {
+  display: flex;
+  flex-direction: column;
+}
+.welcomeComponent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 3;
+}
+
+.dropdownComponent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}

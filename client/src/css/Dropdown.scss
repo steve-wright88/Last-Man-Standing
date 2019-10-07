@@ -1,4 +1,15 @@
 #dropdownContainer {
   display: flex;
   flex-direction: row;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#selectField {
+  width: 60vw;
+}
+
+hr {
+  background-color: rgba(50, 182, 122, 0.3);
 }

@@ -33,15 +33,12 @@ export default class Dropdown extends Component {
       {
         chosenTeam: value
       },
-      () => {
-        console.log(this.state);
-      }
+      () => {}
     );
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log("...", this.state.chosenTeam);
     axios.post("api/pick/9", { team: this.state.chosenTeam }).then(() => {
       //FIX THIS!!!!!!!!!!!!
       this.refreshData();
@@ -52,15 +49,15 @@ export default class Dropdown extends Component {
   };
 
   render() {
-    console.log(this.state.available);
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div id="dropdownContainer">
-          <FormControl>
+      <>
+        <form onSubmit={this.handleSubmit}>
+          <FormControl id="dropdownContainer">
             <Select
               onChange={this.handleChange}
               renderValue={() => <em>{this.state.chosenTeam}</em>}
               value={this.state.chosenTeam}
+              id="selectField"
             >
               {this.state.available.map(el => {
                 return (
@@ -72,8 +69,9 @@ export default class Dropdown extends Component {
             </Select>
             <Button type="submit">SUBMIT</Button>
           </FormControl>
-        </div>
-      </form>
+        </form>
+        <hr />
+      </>
     );
   }
 }

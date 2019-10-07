@@ -5,6 +5,7 @@ import Signup from "./components/Signup";
 import Login from "./components/Login";
 import Home from "./components/Home";
 import Main from "./components/Main";
+import Rules from "./components/Rules";
 
 import "./App.css";
 
@@ -28,7 +29,8 @@ class App extends React.Component {
           exact
           path="/main"
           render={props => {
-            if (this.state.user) return <Main {...props} />;
+            if (this.state.user)
+              return <Main {...props} user={this.state.user} />;
             else return <Redirect to="/" />;
           }}
         />
@@ -45,13 +47,7 @@ class App extends React.Component {
           path="/login"
           render={props => <Login setUser={this.setUser} {...props} />}
         />
-        <Route
-          exact
-          path="/main"
-          render={props => (
-            <Main setUser={this.setUser} {...props} user={this.state.user} />
-          )}
-        />
+        <Route exact path="/rules" render={props => <Rules />} />
       </div>
     );
   }

@@ -6,7 +6,7 @@ import "../css/Main.scss";
 const Main = props => {
   return (
     <div className="mainContainer">
-      <Head />
+      <Head user={props.user} />
       {/* <CompWelcome user={props.user} /> */}
     </div>
   );

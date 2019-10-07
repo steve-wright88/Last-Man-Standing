@@ -4,14 +4,14 @@ import CompWelcome from "./CompWelcome";
 
 const Head = props => {
   return (
-    <>
+    <div id="headContainer">
       <div id="welcomeComponent">
         <CompWelcome user={props.user} />
       </div>
       <div id="dropdownComponent">
         <Dropdown />
       </div>
-    </>
+    </div>
   );
 };
 
