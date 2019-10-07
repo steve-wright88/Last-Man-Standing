@@ -2,13 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import axios from "axios";
 
 axios.get("/api/auth/loggedin").then(response => {
   const user = response.data;
-  console.log(user);
+  console.log("user index.js", user);
   ReactDOM.render(
     <BrowserRouter>
       <App user={user} />
@@ -16,5 +15,3 @@ axios.get("/api/auth/loggedin").then(response => {
     document.getElementById("root")
   );
 });
-
-serviceWorker.unregister();

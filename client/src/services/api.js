@@ -1,9 +1,9 @@
 // src/services/api.js
 import axios from "axios";
 
-const signup = (username, password) => {
+const signup = (username, firstName, lastName, password) => {
   return axios
-    .post("/api/auth/signup", { username, password })
+    .post("/api/auth/signup", { username, firstName, lastName, password })
     .then(response => {
       return response.data;
     })

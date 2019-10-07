@@ -33,7 +33,7 @@ router.post("/signup", (req, res) => {
         lastName: lastName
       }).then(dbUser => {
         // Login the user on signup
-
+        console.log("new user created", dbUser);
         req.login(dbUser, err => {
           if (err) {
             return res
@@ -61,6 +61,7 @@ router.post("/login", (req, res) => {
         .json({ message: "Incorrect username or password" });
     }
     req.login(user, err => {
+      console.log("login", user);
       if (err) {
         return res
           .status(500)

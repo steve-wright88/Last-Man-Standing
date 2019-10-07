@@ -3,6 +3,7 @@ import axios from "axios";
 
 /*################### styles ###################*/
 import { FormControl, Select, MenuItem, Button } from "@material-ui/core";
+import "../css/Dropdown.scss";
 /*################### /styles ##################*/
 
 export default class Dropdown extends Component {
@@ -54,22 +55,24 @@ export default class Dropdown extends Component {
     console.log(this.state.available);
     return (
       <form onSubmit={this.handleSubmit}>
-        <FormControl>
-          <Select
-            onChange={this.handleChange}
-            renderValue={() => <em>{this.state.chosenTeam}</em>}
-            value={this.state.chosenTeam}
-          >
-            {this.state.available.map(el => {
-              return (
-                <MenuItem key={el.team} value={el.team}>
-                  {el.team}
-                </MenuItem>
-              );
-            })}
-          </Select>
-          <Button type="submit">SUBMIT</Button>
-        </FormControl>
+        <div id="dropdownContainer">
+          <FormControl>
+            <Select
+              onChange={this.handleChange}
+              renderValue={() => <em>{this.state.chosenTeam}</em>}
+              value={this.state.chosenTeam}
+            >
+              {this.state.available.map(el => {
+                return (
+                  <MenuItem key={el.team} value={el.team}>
+                    {el.team}
+                  </MenuItem>
+                );
+              })}
+            </Select>
+            <Button type="submit">SUBMIT</Button>
+          </FormControl>
+        </div>
       </form>
     );
   }

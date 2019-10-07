@@ -1,0 +1,36 @@
+.loginContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 255, 255);
+  height: 100vh;
+  padding-bottom: 30vh;
+}
+
+.loginHolder {
+  margin-top: 200px;
+}
+
+.loginHolder h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: rgb(50, 182, 122);
+  font-weight: bolder;
+  margin-bottom: 4rem;
+}
+
+#loginBtn2 {
+  min-width: 70vw;
+  margin: 2rem;
+  border-radius: 16px;
+  background-color: rgb(50, 182, 122);
+  cursor: pointer;
+  -webkit-filter: drop-shadow(1px 1px 1px #222);
+  filter: drop-shadow(1px 1px 1px #222);
+}
+
+#loginBtn2 h5 {
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}

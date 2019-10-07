@@ -1,41 +1,79 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
+import { logout } from "../services/api";
 import { Link } from "react-router-dom";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  IconButton,
+  Box,
+  Grid,
+  MenuItem,
+  Menu,
+  Fade
+} from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1
-  },
-  title: {
-    flexGrow: 1
-  }
-}));
+import "../css/TopNav.scss";
 
-export default function ButtonAppBar() {
-  const classes = useStyles();
+function TopNav(props) {
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
 
+  const handleClick = event => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleLogout = props => {
+    logout().then(() => {
+      props.setUser(null);
+    });
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
+    <Box display="flex">
+      <AppBar position="fixed" id="TopNav">
         <Toolbar>
-          <Typography variant="h6" id="lmsTitle" className={classes.title}>
-            <Link to="/">LMS</Link>
-          </Typography>
-          <IconButton
-            edge="start"
-            className={classes.menuButton}
-            color="inherit"
-            aria-label="menu"
+          <Grid
+            container
+            direction="row"
+            justify="space-between"
+            alignItems="center"
           >
-            <MenuIcon />
-          </IconButton>
+            <Typography variant="h5">
+              <Link to="/" id="logo">
+                LMS
+              </Link>
+            </Typography>
+            <IconButton
+              aria-controls="fade-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <MenuIcon id="logo" />
+            </IconButton>
+            <Menu
+              id="fade-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={open}
+              onClose={handleClose}
+              TransitionComponent={Fade}
+            >
+              <MenuItem onClick={handleClose}>Rules</MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/" onClick={() => handleLogout(props)}>
+                  Logout
+                </Link>
+              </MenuItem>
+            </Menu>
+          </Grid>
         </Toolbar>
       </AppBar>
-    </div>
+    </Box>
   );
 }
+
+export default TopNav;

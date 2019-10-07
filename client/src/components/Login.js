@@ -1,6 +1,30 @@
 import React, { Component } from "react";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Alert } from "react-bootstrap";
 import { login } from "../services/api";
+import { Button } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+
+import "../css/Login.scss";
+
+/* ############## - styles - ############## */
+const useStyles = makeStyles(theme => ({
+  container: {
+    display: "flex",
+    flexWrap: "wrap"
+  },
+  textField: {
+    marginLeft: theme.spacing(1),
+    marginRight: theme.spacing(1)
+  },
+  dense: {
+    marginTop: theme.spacing(2)
+  },
+  menu: {
+    width: 200
+  }
+}));
+/* ############## - styles - ############## */
 
 export default class Login extends Component {
   state = {
@@ -20,9 +44,10 @@ export default class Login extends Component {
   handleSubmit = event => {
     event.preventDefault();
 
-    const { username, password, firstName, lastName } = this.state;
+    const { username, password } = this.state;
 
     login(username, password).then(data => {
+      console.log("data..login Login", data);
       if (data.message) {
         this.setState({
           message: data.message,
@@ -40,35 +65,63 @@ export default class Login extends Component {
 
   render() {
     return (
-      <>
-        <h2>Login</h2>
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group>
-            <Form.Label htmlFor="username">Username: </Form.Label>
-            <Form.Control
+      <div className="loginContainer">
+        <div className="loginHolder">
+          <h2>Log in to LMS</h2>
+          <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
+            <TextField
+              id="outlined-name"
               type="text"
-              name="username"
+              label="Username"
               value={this.state.username}
               onChange={this.handleChange}
-              id="username"
+              margin="normal"
+              variant="outlined"
+              name="username"
             />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label htmlFor="password">Password: </Form.Label>
-            <Form.Control
+            <TextField
+              id="outlined-name"
+              label="Password"
               type="password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
-              id="password"
+              margin="normal"
+              variant="outlined"
+              name="password"
             />
-          </Form.Group>
-          {this.state.message && (
-            <Alert variant="danger">{this.state.message}</Alert>
-          )}
-          <Button type="submit">Login</Button>
-        </Form>
-      </>
+            {this.state.message && (
+              <Alert variant="danger">{this.state.message}</Alert>
+            )}
+            <Button type="submit" id="loginBtn2">
+              <h5>Log in</h5>
+            </Button>
+          </form>
+        </div>
+      </div>
     );
   }
 }
+
+// <Form onSubmit={this.handleSubmit}>
+//               <Form.Group>
+//                 <Form.Label htmlFor="username">Username: </Form.Label>
+//                 <Form.Control
+//                   type="text"
+//                   name="username"
+//                   value={this.state.username}
+//                   onChange={this.handleChange}
+//                   id="username"
+//                 />
+//               </Form.Group>
+//               <Form.Group>
+//                 <Form.Label htmlFor="password">Password: </Form.Label>
+//                 <Form.Control
+//                   type="password"
+//                   name="password"
+//                   value={this.state.password}
+//                   onChange={this.handleChange}
+//                   id="password"
+//                 />
+//               </Form.Group>
+//               </Form>
