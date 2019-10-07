@@ -70,7 +70,12 @@ export default class Signup extends Component {
       <div className="signupContainer">
         <div className="signupHolder">
           <h2>Create your account</h2>
-          <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
+          <form
+            id="formHolderSignup"
+            onSubmit={this.handleSubmit}
+            noValidate
+            autoComplete="off"
+          >
             <TextField
               id="outlined-name"
               type="text"

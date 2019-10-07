@@ -61,13 +61,20 @@ export default class Dropdown extends Component {
             >
               {this.state.available.map(el => {
                 return (
-                  <MenuItem key={el.team} value={el.team}>
+                  <MenuItem id="teamField" key={el.team} value={el.team}>
                     {el.team}
                   </MenuItem>
                 );
               })}
             </Select>
-            <Button type="submit">SUBMIT</Button>
+            <Button
+              variant="outlined"
+              component="span"
+              type="submit"
+              id="teamSubmitBtn"
+            >
+              SUBMIT
+            </Button>
           </FormControl>
         </form>
         <hr />

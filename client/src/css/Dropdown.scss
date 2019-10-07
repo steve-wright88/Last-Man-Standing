@@ -1,15 +1,30 @@
 #dropdownContainer {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 60vw;
 }
 
-#selectField {
-  width: 60vw;
+#dropdownContainer select {
+  min-width: 60vw;
+}
+
+#teamField {
+  min-width: 60vw;
+  display: flex;
+  justify-content: center;
+  height: 1rem;
+}
+
+#teamSubmitBtn {
+  border: solid 1px rgba(50, 182, 122, 1);
+  margin-top: 1rem;
+  margin-bottom: 0;
 }
 
 hr {
   background-color: rgba(50, 182, 122, 0.3);
+  margin: 1rem;
 }

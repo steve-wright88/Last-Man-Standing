@@ -68,7 +68,12 @@ export default class Login extends Component {
       <div className="loginContainer">
         <div className="loginHolder">
           <h2>Log in to LMS</h2>
-          <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
+          <form
+            id="formHolderLogin"
+            onSubmit={this.handleSubmit}
+            noValidate
+            autoComplete="off"
+          >
             <TextField
               id="outlined-name"
               type="text"

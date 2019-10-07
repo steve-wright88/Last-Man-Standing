@@ -31,9 +31,8 @@ router.get("/usersChoices", (req, res) => {
     .populate("choices")
     .then(users => {
       res.json(users);
-    })
-
-})
+    });
+});
 
 router.post("/pick/:round", (req, res) => {
   const round = req.params.round;
