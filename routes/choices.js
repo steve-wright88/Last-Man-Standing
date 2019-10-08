@@ -38,7 +38,7 @@ router.post("/pick/:round", (req, res) => {
   const round = req.params.round;
   const userId = req.user._id;
   const team = req.body.team;
-  console.log(req.body);
+  console.log("hi");
   // check if there is a Choice for that round and user
   Choice.findOne({
     round: round,

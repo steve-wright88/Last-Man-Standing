@@ -1,13 +1,53 @@
 .table {
-  // overflow: scroll;
+  border: none;
+  border-right: solid 1px rgb(50, 182, 122);
+  border-collapse: separate;
+  border-spacing: 0;
+  font: normal 13px Arial, sans-serif;
 }
-
-#playerRow {
-  position: relative;
+.table thead th {
   background-color: rgb(50, 182, 122);
+  border: none;
+  color: #336b6b;
+  padding: 10px;
+  // text-align: left;
+  white-space: nowrap;
 }
 
-#playerRow th {
-  color: rgb(255, 255, 255);
+.table th:not([align]) {
+  text-align: center;
+}
+.table td:not([align]) {
+  text-align: center;
+}
+
+.table tbody td {
+  border-bottom: solid 1px rgb(50, 182, 122);
+  color: #333;
+  padding: 10px;
+  white-space: nowrap;
+}
+.wrapper {
+  position: relative;
+}
+.scroller {
+  margin-left: 120px;
+  overflow-x: scroll;
+  overflow-y: visible;
+  padding-bottom: 5px;
+  width: 300px;
+}
+.table .sticky {
+  border-left: solid 1px rgb(50, 182, 122);
+  border-right: solid 1px rgb(50, 182, 122);
+  left: 0;
+  position: absolute;
+  top: auto;
+  width: 120px;
+}
+
+.playerRow th {
+  background-color: rgb(50, 182, 122);
+  color: rgb(255, 255, 255) !important;
   min-width: 120px;
 }

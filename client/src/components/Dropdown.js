@@ -39,43 +39,46 @@ export default class Dropdown extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    axios.post("api/pick/9", { team: this.state.chosenTeam }).then(() => {
+    axios.post("api/pick/7", { team: this.state.chosenTeam }).then(() => {
       //FIX THIS!!!!!!!!!!!!
       this.refreshData();
+      this.props.getData();
     });
     this.setState({
       chosenTeam: "select a team"
     });
   };
 
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   axios
+  //     .post("api/pick/7", { team: this.state.chosenTeam })
+  //     .then(data => this.setState({
+  //       team: [data.config.data.team]; //chosen team
+  //     })
+  // };
+
   render() {
     return (
       <>
-        <form onSubmit={this.handleSubmit}>
-          <FormControl id="dropdownContainer">
-            <Select
-              onChange={this.handleChange}
-              renderValue={() => <em>{this.state.chosenTeam}</em>}
-              value={this.state.chosenTeam}
-              id="selectField"
-            >
-              {this.state.available.map(el => {
-                return (
-                  <MenuItem id="teamField" key={el.team} value={el.team}>
-                    {el.team}
-                  </MenuItem>
-                );
-              })}
-            </Select>
-            <Button
-              variant="outlined"
-              component="span"
-              type="submit"
-              id="teamSubmitBtn"
-            >
-              SUBMIT
-            </Button>
-          </FormControl>
+        <form onSubmit={this.handleSubmit} id="dropdownContainer">
+          <Select
+            onChange={this.handleChange}
+            renderValue={() => <em>{this.state.chosenTeam}</em>}
+            value={this.state.chosenTeam}
+            id="selectField"
+          >
+            {this.state.available.map(el => {
+              return (
+                <MenuItem id="teamField" key={el.team} value={el.team}>
+                  {el.team}
+                </MenuItem>
+              );
+            })}
+          </Select>
+          <Button variant="outlined" type="submit" id="teamSubmitBtn">
+            SUBMIT
+          </Button>
         </form>
         <hr />
       </>
