@@ -9,7 +9,7 @@ const Head = props => {
         <CompWelcome user={props.user} />
       </div>
       <div id="dropdownComponent">
-        <Dropdown />
+        <Dropdown getData={props.getData} />
       </div>
     </div>
   );
