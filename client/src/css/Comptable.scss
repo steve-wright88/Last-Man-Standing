@@ -1,5 +1,5 @@
 .table {
-  border: none;
+  // border: none;
   border-right: solid 1px rgb(50, 182, 122);
   border-collapse: separate;
   border-spacing: 0;
@@ -7,10 +7,9 @@
 }
 .table thead th {
   background-color: rgb(50, 182, 122);
-  border: none;
+  // border: none;
   color: #336b6b;
   padding: 10px;
-  // text-align: left;
   white-space: nowrap;
 }
 
@@ -35,7 +34,7 @@
   overflow-x: scroll;
   overflow-y: visible;
   padding-bottom: 5px;
-  width: 300px;
+  // width: 100vw;
 }
 .table .sticky {
   border-left: solid 1px rgb(50, 182, 122);
@@ -48,6 +47,61 @@
 
 .playerRow th {
   background-color: rgb(50, 182, 122);
+  color: rgb(255, 255, 255) !important;
+  min-width: 120px;
+}
+
+/* #################################################### - OUT TABLE STYLING - #################################################### */
+
+.tableOut {
+  // border: none;
+  border-right: solid 1px rgb(255, 0, 0);
+  border-collapse: separate;
+  border-spacing: 0;
+  font: normal 13px Arial, sans-serif;
+}
+.tableOut thead th {
+  background-color: rgb(255, 0, 0);
+  // border: none;
+  color: #336b6b;
+  padding: 10px;
+  white-space: nowrap;
+}
+
+.tableOut th:not([align]) {
+  text-align: center;
+}
+.tableOut td:not([align]) {
+  text-align: center;
+}
+
+.tableOut tbody td {
+  border-bottom: solid 1px rgb(255, 0, 0);
+  color: #333;
+  padding: 10px;
+  white-space: nowrap;
+}
+.wrapperOut {
+  position: relative;
+}
+.scrollerOut {
+  margin-left: 120px;
+  overflow-x: scroll;
+  overflow-y: visible;
+  padding-bottom: 5px;
+  // width: 100vw;
+}
+.tableOut .stickyOut {
+  border-left: solid 1px rgb(255, 0, 0);
+  border-right: solid 1px rgb(255, 0, 0);
+  left: 0;
+  position: absolute;
+  top: auto;
+  width: 120px;
+}
+
+.playerRowOut th {
+  background-color: rgb(255, 0, 0);
   color: rgb(255, 255, 255) !important;
   min-width: 120px;
 }

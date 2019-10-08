@@ -2,29 +2,10 @@ import React, { Component } from "react";
 import { Alert } from "react-bootstrap";
 import { signup } from "../services/api";
 import { Button } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 
 import "../css/Signup.scss";
 
-/* ############## - styles - ############## */
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: "flex",
-    flexWrap: "wrap"
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1)
-  },
-  dense: {
-    marginTop: theme.spacing(2)
-  },
-  menu: {
-    width: 200
-  }
-}));
-/* ############## - styles - ############## */
 export default class Signup extends Component {
   state = {
     username: "",
