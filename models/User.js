@@ -8,6 +8,10 @@ const userSchema = new Schema(
     lastName: String,
     password: String,
     paid: Boolean,
+    inGame: {
+      type: Boolean,
+      default: true
+    },
     choices: [
       {
         type: Schema.Types.ObjectId,

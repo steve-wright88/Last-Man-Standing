@@ -63,10 +63,12 @@ function TopNav(props) {
               TransitionComponent={Fade}
             >
               <MenuItem onClick={handleClose}>
-                <Link to="/rules">How to play</Link>
+                <Link id="menuitem" to="/rules">
+                  How to play
+                </Link>
               </MenuItem>
               <MenuItem onClick={handleClose}>
-                <Link to="/" onClick={() => handleLogout(props)}>
+                <Link id="menuitem" to="/" onClick={() => handleLogout(props)}>
                   Logout
                 </Link>
               </MenuItem>

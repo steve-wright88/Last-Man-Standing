@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 
 /*################### styles ###################*/
-import { FormControl, Select, MenuItem, Button } from "@material-ui/core";
+import { Select, MenuItem, Button } from "@material-ui/core";
 import "../css/Dropdown.scss";
 /*################### /styles ##################*/
 
@@ -39,7 +39,7 @@ export default class Dropdown extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    axios.post("api/pick/7", { team: this.state.chosenTeam }).then(() => {
+    axios.post("api/pick/9", { team: this.state.chosenTeam }).then(() => {
       //FIX THIS!!!!!!!!!!!!
       this.refreshData();
       this.props.getData();

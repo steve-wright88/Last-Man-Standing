@@ -3,12 +3,12 @@
     { "team": "Arsenal" },
     { "team": "Aston Villa" },
     { "team": "Bournemouth" },
-    { "team": "Brighton Hove" },
+    { "team": "Brighton" },
     { "team": "Burnley" },
     { "team": "Chelsea" },
     { "team": "Crystal Palace" },
     { "team": "Everton" },
-    { "team": "Leicester City" },
+    { "team": "Leicester" },
     { "team": "Liverpool" },
     { "team": "Man City" },
     { "team": "Man United" },
@@ -19,16 +19,17 @@
     { "team": "Tottenham" },
     { "team": "Watford" },
     { "team": "West Ham" },
-    { "team": "Wolverhampton" }
+    { "team": "Wolves" }
   ]
 }
+
 
 {
   "nameConversion": {
     "Arsenal FC": "Arsenal",
     "Aston Villa FC": "Aston Villa",
     "AFC Bournemouth": "Bournemouth",
-    "Brighton & Hove Albion FC": "Brighton Hove",,
+    "Brighton & Hove Albion FC": "Brighton",,
     "Burnley FC": "Burnley",
     "Chelsea FC": "Chelsea",
     "Crystal Palace FC": "Crystal Palace",
