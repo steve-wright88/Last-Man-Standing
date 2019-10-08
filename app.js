@@ -14,8 +14,6 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 
-app.use(express.static(path.join(__dirname, "/client/build")));
-
 require("./configs/passport");
 
 mongoose
@@ -37,6 +35,8 @@ const debug = require("debug")(
 );
 
 const app = express();
+
+app.use(express.static(path.join(__dirname, "/client/build")));
 
 // Middleware Setup
 app.use(logger("dev"));
