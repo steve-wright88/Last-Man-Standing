@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Head from "./Head";
 import CompetitionTable from "../components/CompTable/CompetitionTable";
+import BottomNav from "./BottomNav";
 import axios from "axios";
 
 import "../css/Main.scss";
@@ -30,11 +31,14 @@ class Main extends Component {
   render() {
     console.log("USERS FROM APP", this.state.users);
     return (
-      <div className="mainContainer">
-        <Head user={this.props.user} getData={this.getData} />
+      <>
+        <div className="mainContainer">
+          <Head user={this.props.user} getData={this.getData} />
 
-        <CompetitionTable users={this.state.users} />
-      </div>
+          <CompetitionTable users={this.state.users} />
+        </div>
+        <BottomNav />
+      </>
     );
   }
 }

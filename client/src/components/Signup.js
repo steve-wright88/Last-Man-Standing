@@ -109,8 +109,8 @@ export default class Signup extends Component {
   }
 }
 
-{
-  /* <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
+// {
+/* <form onSubmit={this.handleSubmit} noValidate autoComplete="off">
             <Form.Group>
               <Form.Label htmlFor="username">Username: </Form.Label>
               <Form.Control
@@ -150,8 +150,8 @@ export default class Signup extends Component {
                 onChange={this.handleChange}
                 id="password"
               />
-            </Form.Group> */
-}
-{
-  /* </form> */
-}
+//             </Form.Group> */
+// }
+// {
+//   /* </form> */
+// }

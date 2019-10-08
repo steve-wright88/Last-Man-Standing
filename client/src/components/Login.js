@@ -73,7 +73,6 @@ export default class Login extends Component {
               onChange={this.handleChange}
               margin="normal"
               variant="outlined"
-              name="password"
             />
             {this.state.message && (
               <Alert variant="danger">{this.state.message}</Alert>
