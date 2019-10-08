@@ -14,6 +14,8 @@ const path = require("path");
 const session = require("express-session");
 const passport = require("passport");
 
+app.use(express.static(path.join(__dirname, "/client/build")));
+
 require("./configs/passport");
 
 mongoose
@@ -73,5 +75,10 @@ app.use("/api", choicesRoutes);
 
 // const userRoutes1 = require("./routes/availableTeams");
 // app.use("/api", userRoutes1);
+
+app.use((req, res) => {
+  // If no routes match, send them the React HTML.
+  res.sendFile(__dirname + "/client/build/index.html");
+});
 
 module.exports = app;
