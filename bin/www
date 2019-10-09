@@ -1,44 +1,181 @@
 #!/usr/bin/env node
 
-const http = require('http');
+const http = require("http");
 
-let app = require('../app');
+let app = require("../app");
+
+var cron = require("node-cron");
+const User = require("../models/User");
+const Choice = require("../models/Choice");
+const Round = require("../models/Round");
+const axios = require("axios");
 
 // catch 404 and render a not-found.hbs template
 app.use((req, res, next) => {
   res.status(404);
-  res.render('not-found');
+  res.render("not-found");
 });
 
 app.use((err, req, res, next) => {
   // always log the error
-  console.error('ERROR', req.method, req.path, err);
+  console.error("ERROR", req.method, req.path, err);
 
   // only render if the error ocurred before sending the response
   if (!res.headersSent) {
     res.status(500);
-    res.render('error');
+    res.render("error");
   }
 });
 
 let server = http.createServer(app);
 
-server.on('error', error => {
-  if (error.syscall !== 'listen') { throw error }
+server.on("error", error => {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
-    case 'EACCES':
+    case "EACCES":
       console.error(`Port ${process.env.PORT} requires elevated privileges`);
       process.exit(1);
       break;
-    case 'EADDRINUSE':
+    case "EADDRINUSE":
       console.error(`Port ${process.env.PORT} is already in use`);
       process.exit(1);
       break;
     default:
       throw error;
   }
+});
+
+cron.schedule("0 18 * * 5", () => {
+  Round.find().then(round => {
+    User.find()
+      .populate("choices")
+      .then(users => {
+        users.forEach(user => {
+          let teamArray = [
+            "Arsenal",
+            "Aston Villa",
+            "Bournemouth",
+            "Brighton",
+            "Burnley",
+            "Chelsea",
+            "Crystal Palace",
+            "Everton",
+            "Leicester City",
+            "Liverpool",
+            "Man City",
+            "Man United",
+            "Newcastle",
+            "Norwich",
+            "Sheffield Utd",
+            "Southampton",
+            "Tottenham",
+            "Watford",
+            "West Ham",
+            "Wolverhampton"
+          ];
+          if (user.choices.length < round[0].round) {
+            let selectableTeam = teamArray.filter(
+              team => !user.choices.some(choice => choice.team === team)
+            );
+            let randomTeam =
+              selectableTeam[Math.floor(Math.random() * selectableTeam.length)];
+            Choice.create({
+              user: user._id,
+              round: round[0].round,
+              team: randomTeam,
+              status: "pending"
+            }).then(choice => {
+              User.findByIdAndUpdate(user._id, {
+                $push: { choices: choice._id }
+              }).then(() => console.log("fully updated!"));
+            });
+          }
+        });
+        console.log("done");
+      });
+  });
+});
+cron.schedule("01 0 * * 2", () => {
+  let instance = axios.create({
+    headers: {
+      "X-Auth-Token": "c89c1d5d960f4950b1dc811236714bae"
+    }
+  });
+  instance
+    .get(
+      "https://api.football-data.org/v2/competitions/2021/matches?season=2019&matchday=8"
+    )
+    .then(result => {
+      let nameConversion = {
+        "Arsenal FC": "Arsenal",
+        "Aston Villa FC": "Aston Villa",
+        "AFC Bournemouth": "Bournemouth",
+        "Brighton & Hove Albion FC": "Brighton",
+        "Burnley FC": "Burnley",
+        "Chelsea FC": "Chelsea",
+        "Crystal Palace FC": "Crystal Palace",
+        "Everton FC": "Everton",
+        "Leicester City FC": "Leicester City",
+        "Liverpool FC": "Liverpool",
+        "Manchester City FC": "Man City",
+        "Manchester United FC": "Man United",
+        "Newcastle United FC": "Newcastle",
+        "Norwich City FC": "Norwich",
+        "Sheffield United FC": "Sheffield Utd",
+        "Southampton FC": "Southampton",
+        "Tottenham Hotspur FC": "Tottenham",
+        "Watford FC": "Watford",
+        "West Ham United FC": "West Ham",
+        "Wolverhampton Wanderers FC": "Wolverhampton"
+      };
+      let matchResult = result.data.matches.reduce(
+        (acc, team, i) => {
+          let homeTeamScore = team.score.fullTime.homeTeam;
+          let awayTeamScore = team.score.fullTime.awayTeam;
+          if (homeTeamScore > awayTeamScore) {
+            acc.winner.push(nameConversion[team.homeTeam.name]);
+            acc.loser.push(nameConversion[team.awayTeam.name]);
+          } else if (homeTeamScore < awayTeamScore) {
+            acc.loser.push(nameConversion[team.homeTeam.name]);
+            acc.winner.push(nameConversion[team.awayTeam.name]);
+          } else {
+            acc.loser.push(nameConversion[team.homeTeam.name]);
+            acc.loser.push(nameConversion[team.awayTeam.name]);
+          }
+          return acc;
+        },
+        { winner: [], loser: [] }
+      );
+      Choice.update(
+        { team: { $in: matchResult.winner } },
+        { $set: { status: "win" } },
+        { multi: true }
+      ).then(() => {
+        Choice.update(
+          { team: { $in: matchResult.loser } },
+          { $set: { status: "lose" } },
+          { multi: true }
+        ).then(() => {
+          User.find()
+            .populate("choices")
+            .then(users => {
+              users.forEach(user => {
+                if (user.choices.some(choice => choice.status === "lose")) {
+                  User.findByIdAndUpdate(user._id, { inGame: false }).then(
+                    () => {}
+                  );
+                }
+              });
+              console.log("updated");
+            });
+        });
+      });
+    })
+    .catch(err => console.log(err));
 });
 
 server.listen(process.env.PORT, () => {

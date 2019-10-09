@@ -2,7 +2,8 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 const Choice = require("../models/Choice");
-const axios = require('axios')
+const axios = require("axios");
+const Round = require("../models/Round");
 
 const teams = require("../data.json").premierleague;
 
@@ -35,57 +36,44 @@ router.get("/usersChoices", (req, res) => {
     });
 });
 
-router.get('/updateResult', (req, res) => {
-  let instance = axios.create({
-    headers: {
-      "X-Auth-Token": 'c89c1d5d960f4950b1dc811236714bae'
-    }
-  })
-
-  instance.get('https://api.football-data.org/v2/competitions/2021/matches?season=2019&matchday=8').then(result => {
-
-    let matchObj = result.data.matches.reduce((acc, team, i) => {
-      let homeResult = team.score.fullTime.homeTeam > team.score.fullTime.awayTeam ? "winner" : "loser"
-
-      let awayResult = team.score.fullTime.awayTeam > team.score.fullTime.homeTeam ? "winner" : "loser"
-
-      acc[team.homeTeam.name] = homeResult
-      acc[team.awayTeam.name] = awayResult
-      return acc
-    }, {})
-    res.json({ matchObj })
-  }).catch(err => res.json(err))
-})
+router.get("/makeRound", (req, res) => {
+  Round.create({ round: 1 }).then(round => {
+    res.json(round);
+  });
+});
 
 router.post("/pick/:round", (req, res) => {
-  const round = req.params.round;
   const userId = req.user._id;
   const team = req.body.team;
-  console.log("hi");
   // check if there is a Choice for that round and user
-  Choice.findOne({
-    round: round,
-    user: userId
-  }).then(pick => {
-    // if no create a Choice
-    if (!pick) {
-      Choice.create({
-        user: userId,
-        round: round,
-        team: team,
-        status: "pending"
-      }).then(newChoice => {
-        const id = newChoice._id;
-        User.findByIdAndUpdate(userId, { $push: { choices: id } }).then(() => {
+  Round.find().then(rounds => {
+    let round = rounds[0].round;
+    Choice.findOne({
+      round: round,
+      user: userId
+    }).then(pick => {
+      // if no create a Choice
+      if (!pick) {
+        Choice.create({
+          user: userId,
+          round: round,
+          team: team,
+          status: "pending"
+        }).then(newChoice => {
+          const id = newChoice._id;
+          User.findByIdAndUpdate(userId, { $push: { choices: id } }).then(
+            () => {
+              res.json({ message: "ok" });
+            }
+          );
+        });
+      } else {
+        // else update the Choice
+        Choice.findByIdAndUpdate(pick._id, { team: team }).then(() => {
           res.json({ message: "ok" });
         });
-      });
-    } else {
-      // else update the Choice
-      Choice.findByIdAndUpdate(pick._id, { team: team }).then(() => {
-        res.json({ message: "ok" });
-      });
-    }
+      }
+    });
   });
 });
 

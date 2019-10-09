@@ -39,7 +39,7 @@ export default class Dropdown extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    axios.post("api/pick/9", { team: this.state.chosenTeam }).then(() => {
+    axios.post("api/pick/2", { team: this.state.chosenTeam }).then(() => {
       //FIX THIS!!!!!!!!!!!!
       this.refreshData();
       this.props.getData();

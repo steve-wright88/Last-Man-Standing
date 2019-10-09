@@ -17,7 +17,7 @@ class CompetitionTable extends Component {
                   {Array(9)
                     .fill(0)
                     .map((el, i) => (
-                      <th>Round {i + 1}</th>
+                      <th key={i}>Round {i + 1}</th>
                     ))}
                 </tr>
               </thead>

@@ -34,7 +34,6 @@ class Main extends Component {
       <>
         <div className="mainContainer">
           <Head user={this.props.user} getData={this.getData} />
-
           <CompetitionTable users={this.state.users} />
         </div>
         <BottomNav />

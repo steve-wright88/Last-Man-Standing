@@ -33,50 +33,50 @@ function TopNav(props) {
     setAnchorEl(null);
   };
   return (
-    <Box display="flex">
-      <AppBar position="fixed" id="TopNav">
-        <Toolbar>
-          <Grid
-            container
-            direction="row"
-            justify="space-between"
-            alignItems="center"
+    // <Box display="flex">
+    <AppBar position="fixed" id="TopNav">
+      <Toolbar>
+        <Grid
+          container
+          direction="row"
+          justify="space-between"
+          alignItems="center"
+        >
+          <Typography variant="h5">
+            <Link to="/" id="logo">
+              LMS
+            </Link>
+          </Typography>
+          <IconButton
+            aria-controls="fade-menu"
+            aria-haspopup="true"
+            onClick={handleClick}
           >
-            <Typography variant="h5">
-              <Link to="/" id="logo">
-                LMS
+            <MenuIcon id="logo" />
+          </IconButton>
+          <Menu
+            id="fade-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={open}
+            onClose={handleClose}
+            TransitionComponent={Fade}
+          >
+            <MenuItem onClick={handleClose}>
+              <Link id="menuitem" to="/rules">
+                How to play
               </Link>
-            </Typography>
-            <IconButton
-              aria-controls="fade-menu"
-              aria-haspopup="true"
-              onClick={handleClick}
-            >
-              <MenuIcon id="logo" />
-            </IconButton>
-            <Menu
-              id="fade-menu"
-              anchorEl={anchorEl}
-              keepMounted
-              open={open}
-              onClose={handleClose}
-              TransitionComponent={Fade}
-            >
-              <MenuItem onClick={handleClose}>
-                <Link id="menuitem" to="/rules">
-                  How to play
-                </Link>
-              </MenuItem>
-              <MenuItem onClick={handleClose}>
-                <Link id="menuitem" to="/" onClick={() => handleLogout(props)}>
-                  Logout
-                </Link>
-              </MenuItem>
-            </Menu>
-          </Grid>
-        </Toolbar>
-      </AppBar>
-    </Box>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+              <Link id="menuitem" to="/" onClick={() => handleLogout(props)}>
+                Logout
+              </Link>
+            </MenuItem>
+          </Menu>
+        </Grid>
+      </Toolbar>
+    </AppBar>
+    // </Box>
   );
 }
 

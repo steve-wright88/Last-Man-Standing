@@ -10,7 +10,7 @@ function Home(props) {
     <>
       <div id="homeContainer">
         <div id="homeRowTop">
-          <h2>Welcome to LMS</h2>
+          <h2>Last Man Standing</h2>
           <p>
             To join the competition please sign in below. The rules can be found
             in the menu.
