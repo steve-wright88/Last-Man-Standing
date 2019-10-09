@@ -6,7 +6,6 @@ import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
 import FormatListNumberedIcon from "@material-ui/icons/FormatListNumbered";
 import EventIcon from "@material-ui/icons/Event";
 import SportsSoccerIcon from "@material-ui/icons/SportsSoccer";
-import LeagueTable from "./LeagueTable";
 
 import "../css/BottomNav.scss";
 
