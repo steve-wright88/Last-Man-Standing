@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import BottomNavigation from "@material-ui/core/BottomNavigation";
 import BottomNavigationAction from "@material-ui/core/BottomNavigationAction";
@@ -30,16 +31,22 @@ export default function SimpleBottomNavigation() {
         className={classes.root}
       >
         <BottomNavigationAction
+          component={Link}
+          to="/main"
           className="bottomNavStyle"
           label="Competition"
           icon={<SportsSoccerIcon />}
         />
         <BottomNavigationAction
+          component={Link}
+          to="/leaguetable"
           className="bottomNavStyle"
           label="League Table"
           icon={<FormatListNumberedIcon />}
         />
         <BottomNavigationAction
+          component={Link}
+          to="/fixtures"
           className="bottomNavStyle"
           label="Fixtures"
           icon={<EventIcon />}

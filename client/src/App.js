@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Home from "./components/Home";
 import Main from "./components/Main";
 import Rules from "./components/Rules";
+import Fixtures from "./components/Fixtures";
 
 import "./App.css";
 import LeagueTable from "./components/LeagueTable";
@@ -35,9 +36,7 @@ class App extends React.Component {
             else return <Redirect to="/" />;
           }}
         />
-
         <Route exact path="/" render={props => <Home />} />
-
         <Route
           exact
           path="/signup"
@@ -49,8 +48,8 @@ class App extends React.Component {
           render={props => <Login setUser={this.setUser} {...props} />}
         />
         <Route exact path="/rules" render={props => <Rules />} />
-
         <Route exact path="/leaguetable" render={props => <LeagueTable />} />
+        <Route exact path="/fixtures" render={props => <Fixtures />} />
       </div>
     );
   }
