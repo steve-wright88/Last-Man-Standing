@@ -1,8 +1,16 @@
 .bottomNav {
+  display: flex;
+  justify-content: space-between;
   width: 100vw;
   position: fixed;
   bottom: 0;
 }
+
+.bottomNavStyle {
+  background-color: rgb(50, 182, 122) !important;
+  color: white !important;
+}
+
 .MuiBottomNavigation-root {
   width: 100vw !important;
 }
