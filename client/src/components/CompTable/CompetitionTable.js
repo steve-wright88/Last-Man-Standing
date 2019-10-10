@@ -30,9 +30,7 @@ class CompetitionTable extends Component {
                             {user.firstName} {user.lastName}
                           </td>
                           {user.choices.map((el, i) => (
-                            <td className={el.status} key={Date.now()}>
-                              {el.team}
-                            </td>
+                            <td className={el.status}>{el.team}</td>
                           ))}
                         </tr>
                       ))
@@ -64,14 +62,12 @@ class CompetitionTable extends Component {
                       .filter(user => !user.inGame)
                       .sort((a, b) => a.firstName.localeCompare(b.firstName))
                       .map((user, i) => (
-                        <tr key={Date.now()}>
+                        <tr>
                           <td className="stickyOut">
                             {user.firstName} {user.lastName}
                           </td>
                           {user.choices.map((el, i) => (
-                            <td className={el.status} key={Date.now()}>
-                              {el.team}
-                            </td>
+                            <td className={el.status}>{el.team}</td>
                           ))}
                         </tr>
                       ))
