@@ -10,7 +10,7 @@ const CompWelcome = props => {
       </div>
 
       <div>
-        <p id="roundChoice">Please choose your team for round 1.</p>
+        <p id="roundChoice">Please choose your team.</p>
         {/* Choose your team for round {props.choices.round} */}
       </div>
     </>

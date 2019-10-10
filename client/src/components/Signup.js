@@ -38,8 +38,6 @@ export default class Signup extends Component {
           password: ""
         });
       } else {
-        // successfully signed up
-        // update the state for the parent component
         this.props.setUser(data);
         this.props.history.push("/main");
       }

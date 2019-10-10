@@ -1,6 +1,6 @@
 import React from "react";
 import BottomNav from "./BottomNav";
-
+import "../css/LeagueTable.scss";
 const LeagueTable = () => {
   return (
     <>

@@ -7,7 +7,7 @@ const Rules = () => {
     <>
       <div id="rulesContainer">
         <div id="rulesContent">
-          <h1>LMS Rules</h1>
+          <h1>How to play</h1>
           <ol>
             <li>Entry is £5</li>
             <li>

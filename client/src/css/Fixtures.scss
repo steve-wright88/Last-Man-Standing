@@ -1,5 +1,18 @@
 .fixtures {
-  display: flex;
-  justify-content: center;
-  height: 100vh;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: space-between;
+  // height: 80vh;
+  // padding-top: 20vh;
+  // width: 100vw !important;
+  padding-bottom: 120px;
+}
+
+.fixtures .iframeContainer {
+  height: 48vh;
+}
+
+iframe {
+  width: 100vw;
+  // height: 70%;
 }

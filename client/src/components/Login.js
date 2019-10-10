@@ -27,7 +27,6 @@ export default class Login extends Component {
     const { username, password } = this.state;
 
     login(username, password).then(data => {
-      console.log("data..login Login", data);
       if (data.message) {
         this.setState({
           message: data.message,

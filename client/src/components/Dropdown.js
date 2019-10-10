@@ -9,7 +9,7 @@ import "../css/Dropdown.scss";
 export default class Dropdown extends Component {
   state = {
     available: [],
-    chosenTeam: "select a team"
+    chosenTeam: "choose a team"
   };
 
   componentDidMount() {
