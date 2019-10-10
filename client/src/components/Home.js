@@ -25,10 +25,10 @@ class Home extends Component {
           </video>
           <div id="homeRowTop">
             <h2>Last Man Standing</h2>
-            <p>
-              To join the competition please sign in below. The rules can be
-              found in the menu above.
-            </p>
+            {/* <p>
+              To join the competition please sign in below. See how to play by
+              checking in the menu in the top right.
+            </p> */}
           </div>
           <div id="homeRowBottom">
             <Button id="signupBtn">

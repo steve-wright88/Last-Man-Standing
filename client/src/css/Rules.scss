@@ -12,6 +12,10 @@
   width: 85vw;
 }
 
+hr {
+  border: solid 1px rgb(50, 182, 122);
+}
+
 #rulesContent h1 {
   font-size: 2rem;
   font-weight: bolder;
@@ -23,7 +27,7 @@
   font-weight: bolder;
   color: rgb(50, 182, 122);
   text-align: left;
-  list-style: lower-roman;
+  list-style-type: square;
   margin-left: 20px;
 }
 
