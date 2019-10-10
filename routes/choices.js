@@ -41,6 +41,17 @@ router.get("/makeRound", (req, res) => {
     res.json(round);
   });
 });
+//just for presentation reasons
+router.put("/changeRound", (req, res) => {
+  Round.findByIdAndUpdate(
+    { _id: "5d9f5b9debdfa80017f2b11e" },
+    { $inc: { round: 1 } },
+    { new: true }
+  ) //round document id
+    .then(result => {
+      res.json(round);
+    });
+});
 
 router.get("/getRound", (req, res) => {
   Round.find().then(round => {
