@@ -9,13 +9,20 @@ import "../css/Dropdown.scss";
 export default class Dropdown extends Component {
   state = {
     available: [],
-    chosenTeam: "choose a team"
+    chosenTeam: "choose a team",
+    round: ""
   };
 
   componentDidMount() {
     axios.get("/api/availableTeams").then(response => {
       this.setState({
         available: response.data
+      });
+    });
+    axios.get("/api/getRound").then(response => {
+      console.log("axios round", response);
+      this.setState({
+        round: response.data[0].round
       });
     });
   }
@@ -39,11 +46,12 @@ export default class Dropdown extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    axios.post("api/pick/2", { team: this.state.chosenTeam }).then(() => {
-      //FIX THIS!!!!!!!!!!!!
-      this.refreshData();
-      this.props.getData();
-    });
+    axios
+      .post(`api/pick/${this.state.round}`, { team: this.state.chosenTeam })
+      .then(() => {
+        this.refreshData();
+        this.props.getData();
+      });
     this.setState({
       chosenTeam: "select a team"
     });

@@ -42,6 +42,11 @@ router.get("/makeRound", (req, res) => {
   });
 });
 
+router.get("/getRound", (req, res) => {
+  Round.find().then(round => {
+    res.json(round);
+  });
+});
 router.post("/pick/:round", (req, res) => {
   const userId = req.user._id;
   const team = req.body.team;
