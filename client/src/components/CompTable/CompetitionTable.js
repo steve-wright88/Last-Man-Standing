@@ -25,7 +25,7 @@ class CompetitionTable extends Component {
                       .filter(user => user.inGame)
                       .sort((a, b) => a.firstName.localeCompare(b.firstName))
                       .map((user, i) => (
-                        <tr key={i}>
+                        <tr>
                           <td className="sticky">
                             {user.firstName} {user.lastName}
                           </td>
@@ -51,10 +51,10 @@ class CompetitionTable extends Component {
                 <tr className="playerRowOut">
                   <th className="stickyOut">Player</th>
 
-                  {Array(9)
+                  {Array(6)
                     .fill(0)
                     .map((el, i) => (
-                      <th key={i}>Round {i + 1}</th>
+                      <th>Round {i + 1}</th>
                     ))}
                 </tr>
               </thead>
