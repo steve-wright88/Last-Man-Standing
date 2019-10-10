@@ -35,7 +35,7 @@ router.get("/usersChoices", (req, res) => {
       res.json(users);
     });
 });
-
+//get to that route in postman once to initialize the round
 router.get("/makeRound", (req, res) => {
   Round.create({ round: 1 }).then(round => {
     res.json(round);
