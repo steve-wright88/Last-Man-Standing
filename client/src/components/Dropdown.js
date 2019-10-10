@@ -15,14 +15,14 @@ export default class Dropdown extends Component {
 
   componentDidMount() {
     axios.get("/api/availableTeams").then(response => {
-      this.setState({
-        available: response.data
-      });
-    });
-    axios.get("/api/getRound").then(response => {
-      console.log("axios round", response);
-      this.setState({
-        round: response.data[0].round
+      const availableTeams = response.data;
+
+      axios.get("/api/getRound").then(response => {
+        console.log("axios round", response);
+        this.setState({
+          available: availableTeams,
+          round: response.data[0].round
+        });
       });
     });
   }
