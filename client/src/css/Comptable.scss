@@ -1,14 +1,9 @@
 .table {
-  // border: none;
-  border-right: solid 1px rgb(50, 182, 122);
   border-collapse: separate;
   border-spacing: 0;
   font: normal 13px Arial, sans-serif;
 }
 .table thead th {
-  background-color: rgb(50, 182, 122);
-  // border: none;
-  color: #336b6b;
   padding: 10px;
   white-space: nowrap;
 }
@@ -21,8 +16,6 @@
 }
 
 .table tbody td {
-  border-bottom: solid 1px rgb(50, 182, 122);
-  color: #333;
   padding: 10px;
   white-space: nowrap;
 }
@@ -34,11 +27,9 @@
   overflow-x: scroll;
   overflow-y: visible;
   padding-bottom: 5px;
-  // width: 100vw;
+  border-left: solid 1px black;
 }
 .table .sticky {
-  border-left: solid 1px rgb(50, 182, 122);
-  border-right: solid 1px rgb(50, 182, 122);
   left: 0;
   position: absolute;
   top: auto;
@@ -48,21 +39,19 @@
 .playerRow th {
   background-color: rgb(50, 182, 122);
   color: rgb(255, 255, 255) !important;
+  border-bottom: solid 1px black;
   min-width: 120px;
 }
 
 /* #################################################### - OUT TABLE STYLING - #################################################### */
 
 .tableOut {
-  // border: none;
-  border-right: solid 1px rgb(255, 0, 0);
   border-collapse: separate;
   border-spacing: 0;
   font: normal 13px Arial, sans-serif;
 }
 .tableOut thead th {
-  background-color: rgb(255, 0, 0);
-  // border: none;
+  background-color: rgb(218, 28, 28);
   padding: 10px;
   white-space: nowrap;
 }
@@ -75,7 +64,6 @@
 }
 
 .tableOut tbody td {
-  border-bottom: solid 1px rgb(255, 0, 0);
   padding: 10px;
   white-space: nowrap;
 }
@@ -87,11 +75,10 @@
   overflow-x: scroll;
   overflow-y: visible;
   padding-bottom: 5px;
-  // width: 100vw;
+  border-left: solid 1px black;
 }
+
 .tableOut .stickyOut {
-  border-left: solid 1px rgb(255, 0, 0);
-  border-right: solid 1px rgb(255, 0, 0);
   left: 0;
   position: absolute;
   top: auto;
@@ -101,5 +88,22 @@
 .playerRowOut th {
   background-color: rgb(255, 0, 0);
   color: rgb(255, 255, 255) !important;
+  border-bottom: solid 2px black;
   min-width: 120px;
+}
+
+.pending {
+  background-color: rgb(255, 255, 255);
+}
+
+.win {
+  background-color: rgb(50, 182, 122);
+}
+
+.lose {
+  background-color: rgb(218, 28, 28);
+}
+
+.lose {
+  color: rgb(255, 255, 255) !important;
 }

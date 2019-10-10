@@ -1,4 +1,6 @@
 #rulesContainer {
+  display: flex;
+  flex-direction: column;
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -17,8 +19,23 @@
   color: rgb(50, 182, 122);
 }
 
-#rulesContent ol {
+#rulesContent ul {
   font-weight: bolder;
   color: rgb(50, 182, 122);
   text-align: left;
+  list-style: lower-roman;
+  margin-left: 20px;
+}
+
+#backBtn {
+  border-radius: 16px;
+  border: solid 1px rgb(50, 182, 122);
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  display: block;
+}
+
+#backBtn h5 {
+  color: rgb(50, 182, 122);
+  font-weight: bold;
 }

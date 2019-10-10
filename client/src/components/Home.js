@@ -18,7 +18,7 @@ class Home extends Component {
     return (
       <>
         <div id="homeContainer">
-          <video id="background-video" loop autoPlay>
+          <video id="background-video" loop autoPlay playsInline>
             <source src={this.state.video} type="video/mp4" />
             <source src={this.state.video} type="video/ogg" />
             Your browser does not support the video tag.

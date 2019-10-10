@@ -20,16 +20,12 @@ class Main extends Component {
 
   getData = () => {
     axios.get("/api/usersChoices").then(response => {
-      this.setState(
-        {
-          users: response.data
-        },
-        () => console.log(this.state.users)
-      );
+      this.setState({
+        users: response.data
+      });
     });
   };
   render() {
-    console.log("USERS FROM APP", this.state.users);
     return (
       <>
         <div className="mainContainer">

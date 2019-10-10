@@ -6,6 +6,7 @@ const LeagueTable = () => {
     <>
       <div className="leagueTable">
         <iframe
+          title="leaguetable"
           className="iframe"
           id="sofa-standings-embed-1-23776"
           width="100%"

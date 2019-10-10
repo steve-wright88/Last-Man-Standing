@@ -3,8 +3,6 @@ import "../../css/Comptable.scss";
 
 class CompetitionTable extends Component {
   render() {
-    console.log("render comp table", this.props);
-
     return (
       <>
         <div className="wrapper">
@@ -14,7 +12,7 @@ class CompetitionTable extends Component {
                 <tr className="playerRow">
                   <th className="sticky">Player</th>
 
-                  {Array(9)
+                  {Array(6)
                     .fill(0)
                     .map((el, i) => (
                       <th key={i}>Round {i + 1}</th>
@@ -25,13 +23,16 @@ class CompetitionTable extends Component {
                 {this.props
                   ? this.props.users
                       .filter(user => user.inGame)
-                      .map(user => (
-                        <tr>
+                      .sort((a, b) => a.firstName.localeCompare(b.firstName))
+                      .map((user, i) => (
+                        <tr key={i}>
                           <td className="sticky">
                             {user.firstName} {user.lastName}
                           </td>
-                          {user.choices.map(el => (
-                            <td>{el.team}</td>
+                          {user.choices.map((el, i) => (
+                            <td className={el.status} key={Date.now()}>
+                              {el.team}
+                            </td>
                           ))}
                         </tr>
                       ))
@@ -53,7 +54,7 @@ class CompetitionTable extends Component {
                   {Array(9)
                     .fill(0)
                     .map((el, i) => (
-                      <th>Round {i + 1}</th>
+                      <th key={i}>Round {i + 1}</th>
                     ))}
                 </tr>
               </thead>
@@ -61,13 +62,16 @@ class CompetitionTable extends Component {
                 {this.props
                   ? this.props.users
                       .filter(user => !user.inGame)
-                      .map(user => (
-                        <tr>
+                      .sort((a, b) => a.firstName.localeCompare(b.firstName))
+                      .map((user, i) => (
+                        <tr key={Date.now()}>
                           <td className="stickyOut">
                             {user.firstName} {user.lastName}
                           </td>
-                          {user.choices.map(el => (
-                            <td>{el.team}</td>
+                          {user.choices.map((el, i) => (
+                            <td className={el.status} key={Date.now()}>
+                              {el.team}
+                            </td>
                           ))}
                         </tr>
                       ))
