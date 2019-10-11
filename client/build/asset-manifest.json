@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.5edc7c07.chunk.css",
+    "main.css": "/static/css/main.65bb2902.chunk.css",
     "main.js": "/static/js/main.a4d12918.chunk.js",
     "main.js.map": "/static/js/main.a4d12918.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c2763ce9.js",
@@ -8,9 +8,9 @@
     "static/js/2.7478078f.chunk.js": "/static/js/2.7478078f.chunk.js",
     "static/js/2.7478078f.chunk.js.map": "/static/js/2.7478078f.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.80adeaef6b4c3e8901dd6da02b8cd51c.js": "/precache-manifest.80adeaef6b4c3e8901dd6da02b8cd51c.js",
+    "precache-manifest.22a105dfe655aef39698746d301dfe4f.js": "/precache-manifest.22a105dfe655aef39698746d301dfe4f.js",
     "service-worker.js": "/service-worker.js",
-    "static/css/main.5edc7c07.chunk.css.map": "/static/css/main.5edc7c07.chunk.css.map",
+    "static/css/main.65bb2902.chunk.css.map": "/static/css/main.65bb2902.chunk.css.map",
     "static/media/BK-club.mp4": "/static/media/BK-club.3b686391.mp4"
   }
 }
